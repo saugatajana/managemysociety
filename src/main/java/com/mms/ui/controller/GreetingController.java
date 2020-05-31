@@ -1,4 +1,4 @@
-package com.mms.controller;
+package com.mms.ui.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

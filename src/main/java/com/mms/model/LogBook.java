@@ -2,54 +2,37 @@ package com.mms.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.mms.constants.CommonConstants;
+import com.mms.constants.RepositoryConstants;
+
+import lombok.Data;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
+@Table(name = RepositoryConstants.Table.LOG_BOOK)
+@Data
 public class LogBook {
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;	
 	private String visitorType;
 	private String visitorName;
 	private String reasonForVisit;
 	private String securityName;
+	private String modifiedBy;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
 	private Date createTs;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
+	private Date entryTs;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
+	private Date exitTs;
 	private Date modifyTs;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getVisitorType() {
-		return visitorType;
-	}
-	public void setVisitorType(String visitorType) {
-		this.visitorType = visitorType;
-	}
-	public String getVisitorName() {
-		return visitorName;
-	}
-	public void setVisitorName(String visitorName) {
-		this.visitorName = visitorName;
-	}
-	public String getReasonForVisit() {
-		return reasonForVisit;
-	}
-	public void setReasonForVisit(String reasonForVisit) {
-		this.reasonForVisit = reasonForVisit;
-	}
-	public String getSecurityName() {
-		return securityName;
-	}
-	public void setSecurityName(String securityName) {
-		this.securityName = securityName;
-	}
-	public Date getCreateTs() {
-		return createTs;
-	}
-	public void setCreateTs(Date createTs) {
-		this.createTs = createTs;
-	}
-	public Date getModifyTs() {
-		return modifyTs;
-	}
-	public void setModifyTs(Date modifyTs) {
-		this.modifyTs = modifyTs;
-	}
+
 }

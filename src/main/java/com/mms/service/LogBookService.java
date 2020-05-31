@@ -1,9 +1,9 @@
 package com.mms.service;
 
-import java.util.List;
 
 import com.mms.model.LogBook;
 
 public interface LogBookService {
-	public List<LogBook> searchLog();
+	//public List<LogBook> searchLog(String visitorName);
+	public LogBook addLog(LogBook logBook);
 }

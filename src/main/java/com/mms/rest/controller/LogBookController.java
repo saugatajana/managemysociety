@@ -1,10 +1,15 @@
-package com.mms.controller;
+package com.mms.rest.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mms.model.LogBook;
@@ -23,17 +28,22 @@ public class LogBookController {
 	@Autowired
 	private LogBookService logbookService;
 	
-	public void addLog() {
-		
+	/**
+	 * Add an log entry in the database
+	 */
+	@RequestMapping(value="/add",method=RequestMethod.PUT)
+	public LogBook addLog(@RequestBody LogBook logBook) {
+		return logbookService.addLog(logBook);
 	}
 	
 	public void updateLog() {
 		
 	}
 	
-	@GetMapping("/search")
+	/*@RequestMapping(value="/search", method=RequestMethod.GET)
 	public List<LogBook> searchLog() {
-		return logbookService.searchLog();
+		return logbookService.searchLog("Something");
 		
-	}
+	}*/
+	
 }
