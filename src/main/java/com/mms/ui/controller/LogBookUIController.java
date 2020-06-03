@@ -1,13 +1,15 @@
-package com.mms.rest.controller;
+package com.mms.ui.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.mms.model.LogBook;
 import com.mms.model.Response;
@@ -19,12 +21,18 @@ import com.mms.service.LogBookService;
  * Search all entry based on time range/visitorType/VisitorName
  * @author Saugata
  */
-@RestController
-@RequestMapping("/api/logbook")
-public class LogBookController {
+
+@Controller
+@RequestMapping("/logbook")
+public class LogBookUIController {
 	
 	@Autowired
 	private LogBookService logbookService;
+	
+	@GetMapping("/")
+	public String showIndex(){
+		return "logbook";
+	}
 	
 	/*
 	 * Add a log entry in the database
@@ -46,8 +54,10 @@ public class LogBookController {
 	 * Search a log by visitor name
 	 */
 	@RequestMapping(value="/find", method=RequestMethod.GET)
-	public List<LogBook> searchLog(@RequestParam String visitor) {
-		return logbookService.findLog(visitor);
+	public String searchLog(@RequestParam String visitor, Model model) {
+		List<LogBook> logBooks = logbookService.findLog(visitor);
+		model.addAttribute("logBooksList", logBooks);
+		return "logbook";
 	}
 	
 }

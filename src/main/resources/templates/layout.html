@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"></title>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"></title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
-<!-- Main Navigation -->
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
-    <a class="navbar-brand" th:href="@{/}">ManageMySociety</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+	<!-- Main Navigation -->
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/}">ManageMySociety</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a class="nav-link" th:href="@{/logbook/find}">LogBook</a></li>
+				</ul>
+			</div>
+		</div>
 
-    <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/contact}">Contact Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/about}">About Us</a>
-            </li>
-        </ul>
-    </div>
-</nav>
 
-<!-- Content Section -->
-<section layout:fragment="content">
-    <p>This is filled by the content template.</p>
-</section>
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="navbar-nav ml-auto">
+				<!-- <li class="nav-item active"><a class="nav-link" th:href="@{/}">Home</a></li> -->
+				<li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/about}">About Us</a></li>
+			</ul>
+		</div>
+	</nav>
 
-<!-- Footer -->
-<footer class="container py-5">
-    <div class="row">
-        <div class="col-md-12">
-            <p class="text-muted">&copy; 2020 ManageMySociety. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+	<!-- Content Section -->
+	<section layout:fragment="content">
+		<p>This is filled by the content template.</p>
+	</section>
 
-<!-- Optional Section -->
-<th:block layout:fragment="optional" />
+	<!-- Footer -->
+	<footer class="container py-5">
+		<div class="row">
+			<div class="col-md-12">
+				<p class="text-muted">&copy; 2020 ManageMySociety. All rights
+					reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Optional Section -->
+	<th:block layout:fragment="optional" />
 
 </body>
 </html>

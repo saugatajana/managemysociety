@@ -11,6 +11,7 @@ import com.mms.constants.CommonConstants;
 import com.mms.constants.RepositoryConstants;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,8 @@ import javax.persistence.GenerationType;
 @Entity
 @Table(name = RepositoryConstants.Table.LOG_BOOK)
 @Data
-public class LogBook {
+@EqualsAndHashCode(callSuper=false)
+public class LogBook extends Auditable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;	
@@ -26,13 +28,9 @@ public class LogBook {
 	private String visitorName;
 	private String reasonForVisit;
 	private String securityName;
-	private String modifiedBy;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
-	private Date createTs;
+	private String flatNo;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
 	private Date entryTs;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
 	private Date exitTs;
-	private Date modifyTs;
-
 }
