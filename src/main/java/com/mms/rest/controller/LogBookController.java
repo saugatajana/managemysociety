@@ -26,6 +26,10 @@ public class LogBookController {
 	@Autowired
 	private LogBookService logbookService;
 	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public List<LogBook> findLastLogs() {
+		return logbookService.findToplogs();
+	}
 	/*
 	 * Add a log entry in the database
 	 */

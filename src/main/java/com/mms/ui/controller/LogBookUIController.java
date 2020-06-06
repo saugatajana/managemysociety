@@ -30,7 +30,9 @@ public class LogBookUIController {
 	private LogBookService logbookService;
 	
 	@GetMapping("/")
-	public String showIndex(){
+	public String showLogBookIndex(Model model){
+		List<LogBook> logBooks = logbookService.findToplogs();
+		model.addAttribute("lastXLogsList", logBooks);
 		return "logbook";
 	}
 	

@@ -14,10 +14,26 @@
                 <div class="col-md-12">
                     <h1>Log Book</h1>
                     <p></p>
-                    <table>
-            		<tr th:each="log: ${logBooksList}">
+                    <table class="table">
+                    <thead>
+                	<tr>
+                    	<th>Visitor Name</th>
+                    	<th>Visitor Type</th>
+                    	<th>Reason</th>
+                    	<th>Security</th>
+                    	<th>Flat No</th>
+                    	<th>Entry Time</th>
+                    	<th>Exit Time</th>
+                	</tr>
+                </thead>
+            		<tr th:each="log: ${lastXLogsList}">
     					<td th:text="${log.visitorName}" />
     					<td th:text="${log.visitorType}" />
+    					<td th:text="${log.reasonForVisit}" />
+    					<td th:text="${log.securityName}" />
+    					<td th:text="${log.flatNo}" />
+    					<td th:text="${log.entryTs}" />
+    					<td th:text="${log.exitTs}" />
 					</tr>
         			</table>
                 </div>

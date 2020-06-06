@@ -39,5 +39,10 @@ public class LogBookServiceImpl implements LogBookService {
 	public List<LogBook> findLog(String visitorName) {
 		return logbookRepository.findByVisitorName(visitorName);
 	}
+
+	@Override
+	public List<LogBook> findToplogs() {
+		return logbookRepository.findToplogs();
+	}
 	
 }

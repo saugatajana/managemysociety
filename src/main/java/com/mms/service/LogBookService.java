@@ -8,5 +8,6 @@ import com.mms.model.Response;
 
 public interface LogBookService {
 	public List<LogBook> findLog(String visitor);
+	public List<LogBook> findToplogs();
 	public Response addLog(LogBook logBook);
 }
