@@ -1,11 +1,15 @@
 package com.mms.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class Response {
-	private boolean success;
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Response<T> {
 	private String code;
-	private String response;
-	
+	private T payload;	
 }

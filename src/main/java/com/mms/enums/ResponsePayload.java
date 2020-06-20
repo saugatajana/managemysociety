@@ -1,4 +1,4 @@
-package com.mms.enums;
+/*package com.mms.enums;
 
 public enum ResponsePayload {
 	//Users
@@ -7,8 +7,8 @@ public enum ResponsePayload {
 	USER_CREATION_ISSUE("UCEX102", "User cannot be created at this moment"),
 	
 	//LOG
-	LOG_CREATION_SUCCESS("LG101", "Log has been added or updated successfully"),
-	LOG_CREATION_ISSUE("LGEX103", "Log cannot be added at this moment");
+	LOG_CREATION_SUCCESS("LG101", "Log entry has been added or updated successfully"),
+	LOG_CREATION_ISSUE("LGEX103", "Log  entry cannot be added at this moment");
 	
 	private final String key;
     private final String value;
@@ -23,3 +23,4 @@ public enum ResponsePayload {
         return value;
     }
 }
+*/

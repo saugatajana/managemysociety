@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mms.enums.ResponsePayload;
+import com.mms.constants.ResponseConstants.MMSReposneCode;
+import com.mms.constants.ResponseConstants.LogBookOpearationResponse;
 import com.mms.model.LogBook;
 import com.mms.model.Response;
 import com.mms.repository.LogBookRepository;
@@ -18,21 +19,17 @@ public class LogBookServiceImpl implements LogBookService {
 	private LogBookRepository logbookRepository;
 
 	@Override
-	public Response addLog(LogBook logBook) {
-		Response response = new Response();
+	public Response<String> addLog(LogBook logBook) {
+		Response<String> response = Response.<String>builder()
+									.code(MMSReposneCode.OK)
+									.payload(LogBookOpearationResponse.LOG_CREATION_SUCCESS)
+									.build();
 		LogBook newLogBack=logbookRepository.save(logBook);
-		if(newLogBack!=null) {
-			logbookRepository.save(logBook);
-			response.setSuccess(true);
-			response.setCode(ResponsePayload.LOG_CREATION_SUCCESS.getKey());
-			response.setResponse(ResponsePayload.LOG_CREATION_SUCCESS.getValue());
-		} else {
-			response.setSuccess(false);
-			response.setCode(ResponsePayload.LOG_CREATION_ISSUE.getKey());
-			response.setResponse(ResponsePayload.LOG_CREATION_ISSUE.getValue());
+		if(newLogBack==null) {
+			response.setCode(MMSReposneCode.FAILED);
+			response.setPayload(LogBookOpearationResponse.LOG_CREATION_FAILED);
 		}
 		return response;
-		
 	}
 
 	@Override

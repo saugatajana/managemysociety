@@ -8,11 +8,16 @@
 <body>
 
 <div layout:fragment="content">
+	
     <section class="my-5">
         <div class="container">
+        	<p class="my-5">
+                <a href="/logbook/add" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2">Add Entry</i></a>
+            </p>
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Log Book</h1>
+                    <h1>Last <span th:text="${#lists.size(lastXLogsList)}"></span>  Entries</h1>
                     <p></p>
                     <table class="table">
                     <thead>

@@ -5,7 +5,8 @@ package com.mms.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mms.enums.ResponsePayload;
+import com.mms.constants.ResponseConstants.MMSReposneCode;
+import com.mms.constants.ResponseConstants.UsersOperationResponse;
 import com.mms.model.Response;
 import com.mms.model.Users;
 import com.mms.repository.UsersRepository;
@@ -18,24 +19,21 @@ public class UsersServiceImpl implements UsersService {
 	private UsersRepository usersRepository;
 
 	@Override
-	public Response addUser(Users user) {
+	public Response<String> addUser(Users user) {
 		Users existingUser = usersRepository.findUsersByUsername(user.getUsername());
-		Response response = new Response();
+		Response<String> response = Response.<String>builder()
+										.code(MMSReposneCode.OK)
+										.payload(UsersOperationResponse.USER_CREATION_SUCCESS)
+										.build();
 		if(existingUser==null) {
 			Users newUser = usersRepository.save(user);
-			if(newUser!=null) {
-				response.setSuccess(true);
-				response.setCode(ResponsePayload.USER_CREATION_SUCCESS.getKey());
-				response.setResponse(ResponsePayload.USER_CREATION_SUCCESS.getValue());
-			} else {
-				response.setSuccess(false);
-				response.setCode(ResponsePayload.USER_CREATION_ISSUE.getKey());
-				response.setResponse(ResponsePayload.USER_CREATION_ISSUE.getValue());
+			if(newUser==null) {
+				response.setCode(MMSReposneCode.FAILED);
+				response.setPayload(UsersOperationResponse.USER_CREATION_FAILED);
 			}
 		} else {
-			response.setSuccess(false);
-			response.setCode(ResponsePayload.USER_CREATION_USER_EXIST.getKey());
-			response.setResponse(ResponsePayload.USER_CREATION_USER_EXIST.getValue());
+			response.setCode(MMSReposneCode.FAILED);
+			response.setPayload(UsersOperationResponse.USER_CREATION_USER_EXIST);
 		}
 		return response;
 	}

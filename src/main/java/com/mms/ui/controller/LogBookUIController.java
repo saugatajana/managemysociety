@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static com.mms.constants.UIConstants.LogBookUI;
+
 import com.mms.model.LogBook;
 import com.mms.model.Response;
 import com.mms.service.LogBookService;
@@ -33,22 +35,22 @@ public class LogBookUIController {
 	public String showLogBookIndex(Model model){
 		List<LogBook> logBooks = logbookService.findToplogs();
 		model.addAttribute("lastXLogsList", logBooks);
-		return "logbook";
+		return LogBookUI.LOGBOOK_MAIN_PAGE;
 	}
 	
 	/*
-	 * Add a log entry in the database
+	 * Navigate to add log entry page
 	 */
-	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public Response addLog(@RequestBody LogBook logBook) {
-		return logbookService.addLog(logBook);
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public String addLog() {
+		return LogBookUI.LOGBOOK_ADD_PAGE;
 	}
 	
 	/*
 	 * Update a log in the database
 	 */
-	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public Response updateLog(@RequestBody LogBook logBook) {
+	@RequestMapping(value="/upsert",method=RequestMethod.POST)
+	public Response<?> upsertLog(@RequestBody LogBook logBook) {
 		return logbookService.addLog(logBook);
 	}
 	
