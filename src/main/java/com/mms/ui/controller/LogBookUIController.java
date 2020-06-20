@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +17,9 @@ import com.mms.model.LogBook;
 import com.mms.model.Response;
 import com.mms.service.LogBookService;
 
+import lombok.extern.slf4j.Slf4j;
+
+
 /**
  * Add an entry to the LogBook
  * Update an entry to the logbook
@@ -24,6 +27,7 @@ import com.mms.service.LogBookService;
  * @author Saugata
  */
 
+@Slf4j
 @Controller
 @RequestMapping("/logbook")
 public class LogBookUIController {
@@ -42,16 +46,20 @@ public class LogBookUIController {
 	 * Navigate to add log entry page
 	 */
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String addLog() {
+	public String addLog(Model model) {
+		model.addAttribute("logbook", new LogBook());
 		return LogBookUI.LOGBOOK_ADD_PAGE;
 	}
 	
 	/*
 	 * Update a log in the database
 	 */
-	@RequestMapping(value="/upsert",method=RequestMethod.POST)
-	public Response<?> upsertLog(@RequestBody LogBook logBook) {
-		return logbookService.addLog(logBook);
+	@RequestMapping(value="/add",method=RequestMethod.POST)
+	public String upsertLog(@ModelAttribute("logbook") LogBook logBook, Model model) {
+		log.debug("Upserting for logbook ");
+		Response<String> response = logbookService.addLog(logBook);
+		model.addAttribute("message", response.getPayload());
+		return LogBookUI.LOGBOOK_ADD_PAGE;
 	}
 	
 	/*

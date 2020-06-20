@@ -16,10 +16,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.Data;
 import lombok.ToString;
 
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 @Data
 @ToString
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable {
 
     @CreatedBy

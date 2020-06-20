@@ -15,10 +15,45 @@
                 
             </p>
             <div class="row">
+            	<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
                 <div class="col-md-12">
-                    <!-- <form action="#" th:action="@{/upsert}" th:object="${logBook}" method="post">
-						<input type="text" id="visitorName" name="visitorName" th:value="*{visitorName}" />
-					</form> -->
+                    <form action="#" th:action="@{/logbook/add}" th:object="${logbook}" method="post">
+                    	<table class="table">
+                    	<thead>
+                		<tr>
+                    		<th></th>
+                    		<th>Add an entry</th>
+                		</tr>
+                		</thead>
+                		<tr>
+                			<td align="right"><label>Visitor Name</label></td>
+                			<td><input type="text" th:field="*{visitorName}" /><br/></td>
+                		</tr>
+                		<tr>
+                			<td align="right"><label>Visitor Type</label></td>
+                			<td><input type="text" th:field="*{visitorType}" /><br/></td>
+                		</tr>
+                		<tr>
+                			<td align="right"><label>FlatNo</label></td>
+                			<td><input type="text" th:field="*{flatNo}" /><br/></td>
+                		</tr>
+                		<tr>
+                			<td align="right"><label>Reason for visit</label></td>
+                			<td><input type="text" th:field="*{reasonForVisit}" /><br/></td>
+                		</tr>
+                		<tr>
+                			<td align="right"><label>Security</label></td>
+                			<td><input type="text" th:field="*{securityName}" /><br/></td>
+                		</tr>
+                		<tfoot>
+                			<tr>
+                				<td></td>
+                				<td><button type="submit">Submit</button></td>
+                			</tr>
+                		</tfoot>
+                		</table>
+                		
+					</form>
                 </div>
             </div>
         </div>

@@ -18,5 +18,8 @@ public class ResponseConstants {
 		public static final String LOG_CREATION_FAILED = "Log  entry cannot be added at this moment";
 	}
 	
-	
+	public interface MaintenanceOpearationResponse {
+		public static final String MAINTENANCE_CREATION_SUCCESS = "Maintenance added successfully";
+		public static final String MAINTENANCE_CREATION_FAILED = "Maintenance added successfully";
+	}
 }

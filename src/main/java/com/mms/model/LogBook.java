@@ -30,7 +30,7 @@ public class LogBook extends Auditable {
 	private String securityName;
 	private String flatNo;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
-	private Date entryTs;
+	private Date entryTs = new Date();
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = CommonConstants.DATE_FORMAT)
-	private Date exitTs;
+	private Date exitTs = new Date();
 }
