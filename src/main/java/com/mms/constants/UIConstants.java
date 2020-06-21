@@ -11,4 +11,12 @@ public class UIConstants {
 		public static final String LOGBOOK_UPDATE_PAGE = LOGBOOK_TEMPLATE_FOLDER + "upddateEntry";
 	}
 	
+	public interface MaintenanceUI {
+		public static final String MAINTENANCE_TEMPLATE_FOLDER = "/maintenance/";
+		public static final String MAINTENANCE_MAIN_PAGE = MAINTENANCE_TEMPLATE_FOLDER + "maintenance";
+		public static final String MAINTENANCE_ADD_PAGE = MAINTENANCE_TEMPLATE_FOLDER + "addEntry";
+		public static final String MAINTENANCE_UPDATE_PAGE = MAINTENANCE_TEMPLATE_FOLDER + "upddateEntry";
+		
+	}
+	
 }

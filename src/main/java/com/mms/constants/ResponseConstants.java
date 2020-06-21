@@ -21,5 +21,6 @@ public class ResponseConstants {
 	public interface MaintenanceOpearationResponse {
 		public static final String MAINTENANCE_CREATION_SUCCESS = "Maintenance added successfully";
 		public static final String MAINTENANCE_CREATION_FAILED = "Maintenance added successfully";
+		public static final String MAINTENANCE_ALREADY_EXIST = "Maintenance already exist";
 	}
 }

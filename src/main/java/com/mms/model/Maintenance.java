@@ -25,7 +25,7 @@ public class Maintenance  extends Auditable {
 	private String flatNo;
 	private String type;
 	private BigDecimal amount;
-	private int forMonth;
+	private String forMonth;
 	private int forYear;
 	private String paidBy;
 	private String receivedBy;

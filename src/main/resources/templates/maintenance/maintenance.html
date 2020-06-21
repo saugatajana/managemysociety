@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Maintenance</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+	
+    <section class="my-5">
+        <div class="container">
+        	<p class="my-5">
+                <a href="/maintenance/add" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2">Add Entry</i></a>
+            </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Last <span th:text="${#lists.size(maintenanceList)}"></span>  Entries</h1>
+                    <p></p>
+                    <table class="table">
+                    <thead>
+                	<tr>
+                    	<th>Flat No</th>
+                    	<th>Maintenance Type</th>
+                    	<th>Amount</th>
+                    	<th>For Month</th>
+                    	<th>Paid By</th>
+                    	<th>Received By</th>
+                    	<th>Approved</th>
+                    	<th>Approved By</th>
+                	</tr>
+                </thead>
+            		<tr th:each="maint: ${maintenanceList}">
+    					<td th:text="${maint.flatNo}" />
+    					<td th:text="${maint.type}" />
+    					<td th:text="${maint.amount}" />
+    					<td th:text="${maint.forMonth}" />
+    					<td th:text="${maint.paidBy}" />
+    					<td th:text="${maint.receivedBy}" />
+    					<td th:text="${maint.approved}" />
+    					<td th:text="${maint.approvedBy}" />
+					</tr>
+        			</table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<th:block th:fragment="optional">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+</th:block>
+
+</body>
+</html>
